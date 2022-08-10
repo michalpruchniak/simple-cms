@@ -19,18 +19,26 @@
                 <div class="card-body">
                     <form action="{{route('article.store')}}" method="POST" id="theform" enctype="multipart/form-data">
                         @csrf
-                        <label for="title">Title`</label>
-                        <input id="title" name="title" />
-                        @error('title')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        <div id="editor">
+                        <div class="form-group">
+                            <label for="title">{{__('title')}}</label>
+                            <input class="form-control" id="title" name="title" />
+                            @error('title')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
-                        @error('description')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
-                        <input type="file" name="file">
-                        <button role="submit">Submit</button>
+                        <div class="form-group">
+                            <label>{{__('description')}}</label>
+                            <div id="editor">
+                            </div>
+                            @error('description')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>{{__('upload file')}}
+                            <input class="form-control" type="file" name="file">
+                        </div>
+                        <button class="btn btn-primary" role="submit">{{__('store')}}</button>
                     </form>
                 </div>
 

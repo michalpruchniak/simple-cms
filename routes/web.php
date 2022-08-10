@@ -25,7 +25,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['Localization'])->name('home');
-Route::get('/panel/article/create', [ArticleController::class, 'create']);
+Route::get('/panel/article/create', [ArticleController::class, 'create'])->name('article.create')->middleware((['Localization']));
 Route::post('/panel/article/store', [ArticleController::class, 'store'])->name('article.store');
 
 Route::get('/loc/{locale?}', [LocalizationController::class, 'setLocalization']);

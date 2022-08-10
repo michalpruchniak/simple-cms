@@ -1,5 +1,7 @@
 {
-  "Welcome": "Welcome on my website",
-  "Test": "en"
-
+  "welcome": "Welcome on my website",
+  "title": "Title",
+  "save": "Save",
+  "description": "Description",
+  "upload file": "Upload file"
 }

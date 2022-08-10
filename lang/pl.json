@@ -1,4 +1,7 @@
 {
-  "Welcome": "Witaj na mojej stronie",
-  "Test": "pl"
+  "welcome": "Witaj na mojej stronie",
+  "title": "Tytuł",
+  "save": "Zapisz",
+  "description": "Opis",
+  "upload file": "Wyślij plik"
 }

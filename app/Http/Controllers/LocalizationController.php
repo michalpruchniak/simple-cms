@@ -9,6 +9,6 @@ class LocalizationController extends Controller
 {
     public function setLocalization($locale,Request $request){
         $request->session()->put('localization', $locale);
-        return redirect()->route('home');
+        return redirect()->route('article.create');
     }
 }
