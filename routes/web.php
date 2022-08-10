@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['Localizations'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['Localization'])->name('home');
+Route::get('/panel/article/create', [ArticleController::class, 'create']);
+Route::post('/panel/article/store', [ArticleController::class, 'store'])->name('article.store');
 
 Route::get('/loc/{locale?}', [LocalizationController::class, 'setLocalization']);

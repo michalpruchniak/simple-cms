@@ -15,8 +15,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+@yield('assets')
 
 </head>
 <body>
@@ -78,18 +77,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <!-- Create the editor container -->
-<div id="editor">
-  <p>Hello World!</p>
-  <p>Some initial <strong>bold</strong> text</p>
-  <p><br></p>
-</div>
-
     </div>
-    <script>
-  var quill = new Quill('#editor', {
-    theme: 'snow'
-  });
-</script>
 </body>
 </html>
