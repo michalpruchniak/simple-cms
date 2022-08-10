@@ -13,10 +13,18 @@ class ArticleController extends Controller
     }
 
     public function store(ArticleStoreRequest $request) {
+        $cover = null;
+        if ($request->hasFile('file')) {
+            $img = $request->file('file');
+            $cover = time() . '.' . $img->getClientOriginalExtension();
+            $path = public_path('/covers');
+            $img->move($path, $cover);
+        }
         Article::create([
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'cover' => $cover
         ]);
-        echo "Hello Honey";
+
     }
 }

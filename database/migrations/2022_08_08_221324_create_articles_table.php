@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
     }

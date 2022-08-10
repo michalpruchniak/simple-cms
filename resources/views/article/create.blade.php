@@ -17,7 +17,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <form action="{{route('article.store')}}" method="POST" id="theform">
+                    <form action="{{route('article.store')}}" method="POST" id="theform" enctype="multipart/form-data">
                         @csrf
                         <label for="title">Title`</label>
                         <input id="title" name="title" />
@@ -29,6 +29,7 @@
                         @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                        <input type="file" name="file">
                         <button role="submit">Submit</button>
                     </form>
                 </div>
