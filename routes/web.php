@@ -46,15 +46,15 @@ Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
 });
 
 Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
-    Route::get('/all-articles',
+    Route::get('/article/all',
                 [AdminController::class, 'allArticles'])
                 ->name('admin.allArticles');
 
-    Route::get('/article-accept/{id}',
+    Route::get('/article/accept/{id}',
                 [AdminController::class, 'acceptArticle'])
                 ->name('admin.articleAccept');
 
-    Route::get('/article-delete/{id}',
+    Route::get('/article/delete/{id}',
                 [AdminController::class, 'deleteArticle'])
                 ->name('admin.articleDelete');
 });
