@@ -24,9 +24,10 @@ class ArticleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|between:5,50',
+            'title'       => 'required|string|between:5,50',
             'description' => 'required|string|between:20,4000',
-            'category' => 'required|exists:App\Models\Category,id'
+            'category'    => 'required|exists:App\Models\Category,id',
+            'file'       => 'nullable|mimes:jpg,jpeg,png|max:1024'
         ];
     }
 }

@@ -48,6 +48,9 @@
                         <div class="form-group">
                             <label>{{__('upload file')}}
                             <input class="form-control" type="file" name="file">
+                            @error('file')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button class="btn btn-primary" role="submit">{{__('save')}}</button>
                     </form>
