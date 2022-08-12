@@ -46,17 +46,25 @@ Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
 });
 
 Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
-    Route::get('/article/all',
+    Route::get('/articles/all',
                 [AdminController::class, 'allArticles'])
                 ->name('admin.allArticles');
 
-    Route::get('/article/accept/{id}',
+    Route::get('/articles/accept/{id}',
                 [AdminController::class, 'acceptArticle'])
                 ->name('admin.articleAccept');
 
-    Route::get('/article/delete/{id}',
+    Route::get('/articles/delete/{id}',
                 [AdminController::class, 'deleteArticle'])
                 ->name('admin.articleDelete');
+
+    Route::get('/users/all',
+                [AdminController::class, 'allUsers'])
+                ->name('admin.allUsers');
+
+    Route::get('/users/delete/{id}',
+                [AdminController::class, 'deleteUser'])
+                ->name('admin.userDelete');
 });
 
 
