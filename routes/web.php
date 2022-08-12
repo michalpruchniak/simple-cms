@@ -65,6 +65,14 @@ Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
     Route::get('/users/delete/{id}',
                 [AdminController::class, 'deleteUser'])
                 ->name('admin.userDelete');
+
+    Route::get('/users/create',
+                [AdminController::class, 'createUser'])
+                ->name('admin.userCreate');
+
+    Route::post('/users/store',
+                [AdminController::class, 'storeUser'])
+                ->name('admin.userStore');
 });
 
 

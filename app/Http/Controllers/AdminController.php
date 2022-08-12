@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -43,6 +45,23 @@ class AdminController extends Controller
         return view('admin.allUsers', [
             'users' => $users
         ]);
+    }
+
+    public function createUser()
+    {
+        return view('admin.user');
+    }
+
+    public function storeUser(UserStoreRequest $request)
+    {
+        User::create([
+            'name'  => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'admin' => $request->admin
+        ]);
+
+        return redirect()->route('admin.allUsers');
     }
 
     public function deleteUser($id)
