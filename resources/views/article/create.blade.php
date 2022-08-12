@@ -20,7 +20,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="title">{{__('title')}}</label>
-                            <input class="form-control" id="title" name="title" />
+                            <input class="form-control" id="title" name="title" value={{old('title')}} >
                             @error('title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -28,9 +28,7 @@
                         <div class="form-group">
                             <label>{{__('description')}}</label>
                             <div id="editor-container">
-                            <p>Hello World!</p>
-                            <p>Some initial <strong>bold</strong> text</p>
-                            <p><br></p>
+                                {{old('description')}}
                             </div>
                             @error('description')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -40,7 +38,7 @@
                             <label>{{__('category')}}</label>
                             <select class="form-control" name="category">
                                 @foreach ($categories as $category )
-                                    <option value={{$category->id}}>{{$category->name}}</option>
+                                    <option value={{$category->id}} @if(old('category') == $category->id) selected @endif>{{$category->name}}</option>
                                 @endforeach
                             </select>
                             @error('category')
@@ -68,8 +66,7 @@ var quill = new Quill('#editor-container', {
           ['image', 'code-block']
         ]
       },
-      placeholder: 'Compose an epic...',
-      theme: 'snow'  // or 'bubble'
+      theme: 'snow'
     });
 
 $(document).ready(function(){
