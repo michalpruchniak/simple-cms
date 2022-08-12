@@ -27,7 +27,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/loc/{locale?}',
-            [LocalizationController::class, 'setLocalization']);
+            [LocalizationController::class, 'setLocalization'])
+            ->name('setLocale');
 
 Route::get('/home',
             [HomeController::class, 'index'])

@@ -8,5 +8,6 @@
   "accept": "Accept",
   "remove accept":  "Remove accept",
   "delete": "Delete",
-  "user": "User"
+  "user": "User",
+  "language": "Language"
 }
