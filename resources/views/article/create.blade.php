@@ -7,7 +7,6 @@
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
   crossorigin="anonymous"></script>
 
-
 @endsection
 @section('content')
 <div class="container">
@@ -28,17 +27,28 @@
                         </div>
                         <div class="form-group">
                             <label>{{__('description')}}</label>
-                            <div id="editor">
+                            <div id="editor-container">
+                            <p>Hello World!</p>
+                            <p>Some initial <strong>bold</strong> text</p>
+                            <p><br></p>
                             </div>
                             @error('description')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label>{{__('category')}}</label>
+                            <select class="form-control">
+                                @foreach ($categories as $category )
+                                    <option value={{$category->id}}>{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label>{{__('upload file')}}
                             <input class="form-control" type="file" name="file">
                         </div>
-                        <button class="btn btn-primary" role="submit">{{__('store')}}</button>
+                        <button class="btn btn-primary" role="submit">{{__('save')}}</button>
                     </form>
                 </div>
 
@@ -47,17 +57,24 @@
     </div>
 </div>
     <script>
-  var quill = new Quill('#editor', {
-    theme: 'snow'
-  });
+var quill = new Quill('#editor-container', {
+    modules: {
+        toolbar: [
+          [{ header: [1, 2, false] }],
+          ['bold', 'italic', 'underline'],
+          ['image', 'code-block']
+        ]
+      },
+      placeholder: 'Compose an epic...',
+      theme: 'snow'  // or 'bubble'
+    });
 
-</script>
-    <script>
 $(document).ready(function(){
   $("#theform").on("submit", function () {
-    let value = $('#editor .ql-editor').html();
+    let value = $('#editor-container .ql-editor').html();
     $(this).append("<textarea name='description' style='display:none'>"+value+"</textarea>");
    });
 });
-    </script>
+</script>
+
 @endsection
