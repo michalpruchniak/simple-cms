@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +33,11 @@ Route::get('/home',
             [HomeController::class, 'index'])
             ->middleware(['Localization'])
             ->name('home');
+
+Route::get('/category/{slug}',
+            [CategoryController::class, 'showArticlesFromCategory'])
+            ->middleware(['Localization'])
+            ->name('category.articlesFromCategory');
 
 Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
     Route::get('/article/create',

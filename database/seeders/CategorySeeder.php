@@ -16,11 +16,13 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'name' => 'PHP'
+            'name' => 'PHP',
+            'slug' => 'php'
         ]);
 
         Category::create([
-            'name' => 'JavaScript'
+            'name' => 'JavaScript',
+            'slug' => 'javascript'
         ]);
     }
 }
