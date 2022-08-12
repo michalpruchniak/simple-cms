@@ -5,8 +5,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-
                 <div class="card-body">
+                    @if($articles->count() > 0)
                         <table class="table">
                             <thead>
                                 <tr>
@@ -40,6 +40,9 @@
 
                             </tbody>
                             </table>
+                            @else
+                            @include('messages.error', ['message' => 'there are no articles'])
+                            @endif
                 </div>
 
             </div>

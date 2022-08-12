@@ -9,5 +9,6 @@
   "remove accept":  "Remove accept",
   "delete": "Delete",
   "user": "User",
-  "language": "Language"
+  "language": "Language",
+  "there are no articles" : "There are no articles"
 }

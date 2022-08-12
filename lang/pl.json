@@ -2,12 +2,13 @@
   "welcome": "Witaj na mojej stronie",
   "title": "Tytuł",
   "description": "Opis",
-  "category": "Category",
+  "category": "Kategoria",
   "upload file": "Wyślij plik",
   "save": "Zapisz",
   "accept": "Akceptacja",
   "remove accept": "Usuń akceptację",
   "delete": "Usuń",
   "user": "Użytkownik",
-  "language": "Język"
+  "language": "Język",
+  "there are no articles" : "Nie ma żadnych artykułów"
 }
