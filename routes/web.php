@@ -45,11 +45,11 @@ Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
 });
 
 Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
-    Route::get('/admin/all-articles',
+    Route::get('/all-articles',
                 [AdminController::class, 'allArticles'])
                 ->name('admin.allArticles');
 
-    Route::get('/admin/article-accept/{id}',
+    Route::get('/article-accept/{id}',
                 [AdminController::class, 'acceptArticle'])
                 ->name('admin.articleAccept');
 });
