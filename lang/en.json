@@ -4,6 +4,7 @@
   "description": "Description",
   "category" : "Category",
   "upload file": "Upload file",
-  "save": "Save"
-
+  "save": "Save",
+  "accept": "Accept",
+  "user": "User"
 }

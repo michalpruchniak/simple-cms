@@ -12,6 +12,7 @@
                                 <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">{{__('title')}}</th>
+                                <th scope="col">{{__('category')}}</th>
                                 <th scope="col">{{__('user')}}</th>
                                 <th scope="col">{{__('accept')}}?</th>
                                 </tr>
@@ -21,6 +22,7 @@
                                 <tr>
                                     <th scope="row">{{$article->id}}</th>
                                     <td>{{$article->title}}</td>
+                                    <td>{{$article->category->name}}</td>
                                     <td>{{$article->user->name}}</td>
                                     <td>
                                         @if($article->accept == 1)

@@ -4,5 +4,7 @@
   "description": "Opis",
   "category": "Category",
   "upload file": "Wyślij plik",
-  "save": "Zapisz"
+  "save": "Zapisz",
+  "accept": "Akceptacja",
+  "user": "Użytkownik"
 }
