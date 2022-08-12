@@ -24,4 +24,13 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function deleteArticle($id) {
+
+        $article = Article::findOrFail($id);
+
+        $article->delete();
+
+        return redirect()->back();
+    }
 }

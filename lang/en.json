@@ -6,5 +6,7 @@
   "upload file": "Upload file",
   "save": "Save",
   "accept": "Accept",
+  "remove accept":  "Remove accept",
+  "delete": "Delete",
   "user": "User"
 }

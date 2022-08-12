@@ -15,6 +15,7 @@
                                 <th scope="col">{{__('category')}}</th>
                                 <th scope="col">{{__('user')}}</th>
                                 <th scope="col">{{__('accept')}}?</th>
+                                <th scope="col">{{__('delete')}}?</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,6 +31,9 @@
                                         @else
                                             <a href={{route('admin.articleAccept', ['id' => $article->id])}} class="btn btn-success">{{__('accept')}}</a>
                                         @endif
+                                    </td>
+                                    <td>
+                                        <a href={{route('admin.articleDelete', ['id' => $article->id])}} class="btn btn-danger">X</a>
                                     </td>
                                 </tr>
                     @endforeach
