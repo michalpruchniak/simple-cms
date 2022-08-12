@@ -10,5 +10,7 @@
   "delete": "Usuń",
   "user": "Użytkownik",
   "language": "Język",
-  "there are no articles" : "Nie ma żadnych artykułów"
+  "there are no articles" : "Nie ma żadnych artykułów",
+  "create article": "Stwórz artykuł",
+  "all articles": "Wszystkie artykuły"
 }

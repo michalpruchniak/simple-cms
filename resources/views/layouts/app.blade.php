@@ -54,7 +54,6 @@
                                 </div>
                             </li>
                     <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -74,6 +73,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('article.create') }}">
+                                        {{ __('create article') }}
+                                    </a>
+                                    @if(Auth::user()->admin == 1)
+                                    <a class="dropdown-item" href="{{ route('admin.allArticles') }}">
+                                        {{ __('all articles') }}
+                                    </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

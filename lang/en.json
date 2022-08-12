@@ -10,5 +10,8 @@
   "delete": "Delete",
   "user": "User",
   "language": "Language",
-  "there are no articles" : "There are no articles"
+  "there are no articles" : "There are no articles",
+  "create article": "Create article",
+  "all articles": "All articles"
+
 }
