@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,11 +26,33 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['Localization'])->name('home');
-Route::get('/panel/article/create', [ArticleController::class, 'create'])->name('article.create')->middleware((['Localization']));
-Route::post('/panel/article/store', [ArticleController::class, 'store'])->name('article.store');
+Route::get('/loc/{locale?}',
+            [LocalizationController::class, 'setLocalization']);
 
-Route::get('/admin/all-articles', [AdminController::class, 'allArticles'])->middleware('AdminPermission')->name('admin.allArticles');
-Route::get('/admin/article-accept/{id}', [AdminController::class, 'acceptArticle'])->middleware('AdminPermission')->name('admin.articleAccept');
+Route::get('/home',
+            [HomeController::class, 'index'])
+            ->middleware(['Localization'])
+            ->name('home');
 
-Route::get('/loc/{locale?}', [LocalizationController::class, 'setLocalization']);
+Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
+    Route::get('/article/create',
+                [ArticleController::class, 'create'])
+                ->name('article.create');
+
+    Route::post('/article/store',
+                [ArticleController::class, 'store'])
+                ->name('article.store');
+});
+
+Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
+    Route::get('/admin/all-articles',
+                [AdminController::class, 'allArticles'])
+                ->name('admin.allArticles');
+
+    Route::get('/admin/article-accept/{id}',
+                [AdminController::class, 'acceptArticle'])
+                ->name('admin.articleAccept');
+});
+
+
+
