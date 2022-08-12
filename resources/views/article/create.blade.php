@@ -38,11 +38,14 @@
                         </div>
                         <div class="form-group">
                             <label>{{__('category')}}</label>
-                            <select class="form-control">
+                            <select class="form-control" name="category">
                                 @foreach ($categories as $category )
                                     <option value={{$category->id}}>{{$category->name}}</option>
                                 @endforeach
                             </select>
+                            @error('category')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>{{__('upload file')}}

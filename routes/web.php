@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LocalizationController;
 use Illuminate\Http\Request;
@@ -27,5 +28,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['Localization'])->name('home');
 Route::get('/panel/article/create', [ArticleController::class, 'create'])->name('article.create')->middleware((['Localization']));
 Route::post('/panel/article/store', [ArticleController::class, 'store'])->name('article.store');
+
+Route::get('/admin/all-articles', [AdminController::class, 'allArticles'])->middleware('AdminPermission')->name('admin.allArticles');
 
 Route::get('/loc/{locale?}', [LocalizationController::class, 'setLocalization']);

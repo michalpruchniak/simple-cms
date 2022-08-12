@@ -7,6 +7,7 @@ use App\Http\Requests\ArticleStoreRequest;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -26,9 +27,11 @@ class ArticleController extends Controller
         $cover = Helpers::uploadFile($request->file('file'));
 
         Article::create([
-            'title' => $request->title,
+            'user_id'     => Auth::user()->id,
+            'title'       => $request->title,
             'description' => $request->description,
-            'cover' => $cover
+            'category_id' => $request->category,
+            'cover'       => $cover
         ]);
 
     }

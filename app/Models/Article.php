@@ -9,13 +9,19 @@ class Article extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'title',
         'description',
         'cover',
-        'category_id'
+        'category_id',
+        'accept'
     ];
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

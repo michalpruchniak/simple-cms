@@ -1,7 +1,9 @@
 {
   "welcome": "Welcome on my website",
   "title": "Title",
-  "save": "Save",
   "description": "Description",
-  "upload file": "Upload file"
+  "category" : "Category",
+  "upload file": "Upload file",
+  "save": "Save"
+
 }

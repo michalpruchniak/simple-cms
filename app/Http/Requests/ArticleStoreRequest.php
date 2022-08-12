@@ -25,7 +25,8 @@ class ArticleStoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string|between:5,50',
-            'description' => 'required|string|between:20,4000'
+            'description' => 'required|string|between:20,4000',
+            'category' => 'required|exists:App\Models\Category,id'
         ];
     }
 }

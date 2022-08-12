@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->string('title');
             $table->text('description');
             $table->string('cover')->nullable();
             $table->integer('category_id');
+            $table->boolean('accept')->default(0);
             $table->timestamps();
         });
     }
