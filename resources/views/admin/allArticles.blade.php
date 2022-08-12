@@ -26,9 +26,9 @@
                                     <td>{{$article->user->name}}</td>
                                     <td>
                                         @if($article->accept == 1)
-                                            <a class="btn btn-danger">{{__('remove accept')}}</a>
+                                            <a href={{route('admin.articleAccept', ['id' => $article->id])}} class="btn btn-danger">{{__('remove accept')}}</a>
                                         @else
-                                            <a class="btn btn-success">{{__('accept')}}</a>
+                                            <a href={{route('admin.articleAccept', ['id' => $article->id])}} class="btn btn-success">{{__('accept')}}</a>
                                         @endif
                                     </td>
                                 </tr>

@@ -14,4 +14,14 @@ class AdminController extends Controller
             'articles' => $articles
         ]);
     }
+
+    public function acceptArticle($id) {
+
+        $article = Article::findOrFail($id);
+
+        $article->accept = !$article->accept;
+        $article->save();
+
+        return redirect()->back();
+    }
 }

@@ -30,5 +30,6 @@ Route::get('/panel/article/create', [ArticleController::class, 'create'])->name(
 Route::post('/panel/article/store', [ArticleController::class, 'store'])->name('article.store');
 
 Route::get('/admin/all-articles', [AdminController::class, 'allArticles'])->middleware('AdminPermission')->name('admin.allArticles');
+Route::get('/admin/article-accept/{id}', [AdminController::class, 'acceptArticle'])->middleware('AdminPermission')->name('admin.articleAccept');
 
 Route::get('/loc/{locale?}', [LocalizationController::class, 'setLocalization']);
