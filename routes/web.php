@@ -81,6 +81,10 @@ Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
     Route::get('/users/edit/{id}',
                 [AdminController::class, 'editUser'])
                 ->name('admin.userEdit');
+
+    Route::post('/users/update/{id}',
+                [AdminController::class, 'updateUser'])
+                ->name('admin.userUpdate');
 });
 
 

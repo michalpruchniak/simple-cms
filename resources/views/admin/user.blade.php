@@ -7,7 +7,7 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    <form action={{route('admin.userStore')}} method="POST">
+                    <form action=@if(empty($user)){{route('admin.userStore')}} @else {{route('admin.userUpdate', ['id' => $user->id])}} @endif method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="name">{{__('name')}}</label>

@@ -20,7 +20,7 @@
                              @foreach ($users as $user)
                                 <tr>
                                     <th scope="row">{{$user->id}}</th>
-                                    <td>{{$user->name}}</td>
+                                    <td><a href={{ route('admin.userEdit', ['id' => $user->id]) }}>{{$user->name}}</a></td>
                                     <td>@if($user->admin == 1) <i class="fa-solid fa-check"></i> @else <i class="fa-solid fa-xmark"></i> @endif</td>
                                     <td>
                                         <a href={{route('admin.userDelete', ['id' => $user->id])}} class="btn btn-danger">X</a>

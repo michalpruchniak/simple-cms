@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -70,6 +71,22 @@ class AdminController extends Controller
         return view('admin.user', [
             'user' => $user
         ]);
+    }
+
+    public function updateUser($id, UserUpdateRequest $request) {
+        $user = User::findOrFail($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->admin = $request->admin;
+        if (isset($request->password)) {
+            $user->password = $request->password;
+        }
+
+        $user->save();
+
+        return redirect()->route('admin.allUsers');
+
     }
 
     public function deleteUser($id)
