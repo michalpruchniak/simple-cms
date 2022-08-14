@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware(['AdminPermission', 'Localization'])->name('welcome');
+})->name('welcome');
 
 Auth::routes();
 
@@ -77,6 +77,10 @@ Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
     Route::post('/users/store',
                 [AdminController::class, 'storeUser'])
                 ->name('admin.userStore');
+
+    Route::get('/users/edit/{id}',
+                [AdminController::class, 'editUser'])
+                ->name('admin.userEdit');
 });
 
 

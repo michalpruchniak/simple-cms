@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
-
     public function create() {
 
         $categories = Category::orderBy('name', 'asc')

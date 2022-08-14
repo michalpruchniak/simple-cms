@@ -64,6 +64,14 @@ class AdminController extends Controller
         return redirect()->route('admin.allUsers');
     }
 
+    public function editUser($id) {
+        $user = User::findOrFail($id);
+
+        return view('admin.user', [
+            'user' => $user
+        ]);
+    }
+
     public function deleteUser($id)
     {
         $user = User::findOrFail($id);
@@ -71,4 +79,5 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
 }

@@ -27,7 +27,7 @@
 
                         <div class="form-group">
                             <label for="name">{{__('default password')}}</label>
-                            <input class="form-control" type="password" id="password" name="password" value=@if(isset($user)) {{ $user->password }} @else {{ old('password')}} @endif >
+                            <input class="form-control" type="password" id="password" name="password">
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
