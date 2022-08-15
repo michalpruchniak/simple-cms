@@ -39,6 +39,9 @@
                                 <a class="nav-link" href={{route('category.articlesFromCategory', ['slug' => $category->slug])}}>{{$category->name}}</a>
                             </li>
                             @endforeach
+                            <li class="nav-item">
+                                <a class="nav-link" href={{route('contact')}}>{{__('contact')}}</a>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

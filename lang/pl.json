@@ -14,6 +14,16 @@
   "create article": "Stwórz artykuł",
   "all articles": "Wszystkie artykuły",
   "this category does't exist or category is empty": "Ta kategoria nie istnieje, albo jest pusta.",
-  "all users": "Wszyscy użytkownicy"
-
+  "all users": "Wszyscy użytkownicy",
+  "contact": "Kontakt",
+  "department": "Dział",
+  "team leader": "Team Leader",
+  "programming department": "Dział programowania",
+  "hr": "HR",
+  "name": "Imię",
+  "email": "Email",
+  "subject": "Temat",
+  "content": "Treść",
+  "send": "Wyślij",
+  "thank you for contact": "Dziękujemy za kontakt"
 }

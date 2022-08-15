@@ -19,7 +19,7 @@
 
                         <div class="form-group">
                             <label for="name">{{__('email')}}</label>
-                            <input class="form-control" id="email" name="email" placeholder=@if(isset($user)) {{ $user->email }} @endif value={{ old('email')}} >
+                            <input class="form-control" id="email" name="email" value=@if(isset($user)) {{ $user->email }} @else {{ old('email')}} @endif >
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

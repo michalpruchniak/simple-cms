@@ -14,6 +14,17 @@
   "create article": "Create article",
   "all articles": "All articles",
   "this category does't exist or category is empty": "This category does't exist or category is empty.",
-  "all users": "All users"
+  "all users": "All users",
+  "contact": "Contact",
+  "department": "Department",
+  "team leader": "Team Leader",
+  "programming department": "Programming department",
+  "hr": "HR",
+  "name": "Name",
+  "email": "Email",
+  "subject": "Subject",
+  "content": "Content",
+  "send": "Send",
+  "thank you for contact": "Thank you for contact"
 
 }

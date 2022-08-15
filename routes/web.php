@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,21 @@ Route::get('/category/{slug}',
             [CategoryController::class, 'showArticlesFromCategory'])
             ->middleware(['Localization'])
             ->name('category.articlesFromCategory');
+
+Route::get('/contact',
+            [MailController::class, 'show'])
+            ->middleware(['Localization'])
+            ->name('contact');
+
+Route::post('/contact/send',
+            [MailController::class, 'send'])
+            ->name('contact.send');
+
+Route::get('/contact/acknowledgement',
+           [MailController::class, 'acknowledgement'])
+           ->middleware(['Localization'])
+           ->name('contact.acknowledgement');
+
 
 Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
     Route::get('/article/create',
