@@ -1,0 +1,25 @@
+.flex-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+.single-article {
+    position: relative;
+    width: 174px;
+    height: 104px;
+    background-size: cover;
+}
+
+.article-details {
+    position: absolute;
+    top: 64px;
+    height: 40px;
+    width: 100%;
+    background-color:rgba(91, 167, 238, 0.7);
+    padding: 5px;
+}
+.single-article h5 {
+    color: #ffe240;
+    font-size: 15px;
+}
