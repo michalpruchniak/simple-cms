@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Libraries\Helpers;
 use App\Http\Requests\ArticleStoreRequest;
+use Illuminate\Support\Str;
 use App\Models\Article;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    public function show($slug) {
+        $article = Article::where('slug', $slug)->firstOrFail();
+
+        return view('frontend.article.single', [
+            'article' => $article
+        ]);
+    }
     public function create() {
 
         $categories = Category::orderBy('name', 'asc')
@@ -31,7 +38,8 @@ class ArticleController extends Controller
             'title'       => $request->title,
             'description' => $request->description,
             'category_id' => $request->category,
-            'cover'       => $cover
+            'cover'       => $cover,
+            'slug'        => Str::slug($request->title)
         ]);
 
     }

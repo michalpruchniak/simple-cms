@@ -35,6 +35,11 @@ Route::get('/home',
             ->middleware(['Localization'])
             ->name('home');
 
+Route::get('/article/{slug}',
+            [ArticleController::class, 'show'])
+            ->middleware(['Localization'])
+            ->name('article');
+
 Route::get('/category/{slug}',
             [CategoryController::class, 'showArticlesFromCategory'])
             ->middleware(['Localization'])

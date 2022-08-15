@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function showArticlesFromCategory($slug) {
 
-        $category = Category::where('slug', $slug)->first();
+        $category = Category::where('slug', $slug)->firstOrFail();
 
         return view('frontend.category.articlesFromCategory', [
             'category' => $category

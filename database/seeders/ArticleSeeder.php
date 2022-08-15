@@ -19,7 +19,8 @@ class ArticleSeeder extends Seeder
             'user_id'       => 1,
             'title'         => 'Test article',
             'description'   => '<p>Hello World</p>',
-            'category_id'   => 1
+            'category_id'   => 1,
+            'slug'          => 'test-article'
         ]);
     }
 }

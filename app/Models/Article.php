@@ -14,7 +14,8 @@ class Article extends Model
         'description',
         'cover',
         'category_id',
-        'accept'
+        'accept',
+        'slug'
     ];
 
     public function category() {
