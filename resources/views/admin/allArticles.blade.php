@@ -58,7 +58,6 @@ var quill = new Quill('#editor-container', {
           ['code-block']
         ]
       },
-      placeholder: 'Compose an epic...',
       theme: 'snow'
     });
 

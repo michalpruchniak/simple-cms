@@ -8,6 +8,9 @@
 
                 <div class="card-body">
                     <div class="flex-box">
+                    @if($articles->count() < 1)
+                    @include('messages.error', ['message' => 'dont have articles'])
+                    @endif
                     @foreach($articles as $article)
                         <div class="single-article" style="background-image: url(@if(isset($article->cover)){{asset('covers')}}/{{$article->cover}} @else {{asset('covers')}}/default.jpg @endif)">
                             <div class="article-details">
