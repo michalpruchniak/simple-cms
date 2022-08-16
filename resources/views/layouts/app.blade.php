@@ -80,13 +80,18 @@
                                         {{ __('create article') }}
                                     </a>
                                     @if(Auth::user()->admin == 1)
-                                    <a class="dropdown-item" href="{{ route('admin.allArticles') }}">
+                                    <a class="dropdown-item" href="{{ route('admin.article.all') }}">
                                         {{ __('all articles') }}
                                     </a>
                                     @endif
                                     @if(Auth::user()->admin == 1)
-                                    <a class="dropdown-item" href="{{ route('admin.allUsers') }}">
+                                    <a class="dropdown-item" href="{{ route('admin.user.all') }}">
                                         {{ __('all users') }}
+                                    </a>
+                                    @endif
+                                    @if(Auth::user()->admin == 1)
+                                    <a class="dropdown-item" href="{{ route('admin.user.create') }}">
+                                        {{ __('create user') }}
                                     </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"

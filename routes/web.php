@@ -17,44 +17,40 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/',
-            [ArticleController::class, 'showAllArticles'])
-            ->middleware(['Localization'])
-            ->name('welcome');
-
 Auth::routes();
 
 Route::get('/loc/{locale?}',
             [LocalizationController::class, 'setLocalization'])
             ->name('setLocale');
 
-Route::get('/article/{slug}',
-            [ArticleController::class, 'show'])
-            ->middleware(['Localization'])
-            ->name('article');
-
-Route::get('/category/{slug}',
-            [ArticleController::class, 'showArticlesFromCategory'])
-            ->middleware(['Localization'])
-            ->name('category.articlesFromCategory');
-
-Route::get('/contact',
-            [MailController::class, 'show'])
-            ->middleware(['Localization'])
-            ->name('contact');
-
 Route::post('/contact/send',
             [MailController::class, 'send'])
             ->name('contact.send');
 
-Route::get('/contact/acknowledgement',
-           [MailController::class, 'acknowledgement'])
-           ->middleware(['Localization'])
-           ->name('contact.acknowledgement');
+Route::middleware((['Localization']))->group(function() {
+    Route::get('/',
+                [ArticleController::class, 'showAllArticles'])
+                ->name('welcome');
 
+    Route::get('/article/{slug}',
+                [ArticleController::class, 'show'])
+                ->name('article');
+
+    Route::get('/category/{slug}',
+                [ArticleController::class, 'showArticlesFromCategory'])
+                ->name('category.articlesFromCategory');
+
+    Route::get('/contact',
+                [MailController::class, 'show'])
+                ->name('contact');
+
+    Route::get('/contact/acknowledgement',
+                [MailController::class, 'acknowledgement'])
+                ->name('contact.acknowledgement');
+});
 
 Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
+
     Route::get('/article/create',
                 [ArticleController::class, 'create'])
                 ->name('article.create');
@@ -67,39 +63,39 @@ Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
 Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
     Route::get('/articles/all',
                 [AdminController::class, 'allArticles'])
-                ->name('admin.allArticles');
+                ->name('admin.article.all');
 
     Route::get('/articles/accept/{id}',
                 [AdminController::class, 'acceptArticle'])
-                ->name('admin.articleAccept');
+                ->name('admin.article.accept');
 
     Route::get('/articles/delete/{id}',
                 [AdminController::class, 'deleteArticle'])
-                ->name('admin.articleDelete');
+                ->name('admin.article.delete');
 
     Route::get('/users/all',
                 [AdminController::class, 'allUsers'])
-                ->name('admin.allUsers');
+                ->name('admin.user.all');
 
     Route::get('/users/delete/{id}',
                 [AdminController::class, 'deleteUser'])
-                ->name('admin.userDelete');
+                ->name('admin.user.delete');
 
     Route::get('/users/create',
                 [AdminController::class, 'createUser'])
-                ->name('admin.userCreate');
+                ->name('admin.user.create');
 
     Route::post('/users/store',
                 [AdminController::class, 'storeUser'])
-                ->name('admin.userStore');
+                ->name('admin.user.store');
 
     Route::get('/users/edit/{id}',
                 [AdminController::class, 'editUser'])
-                ->name('admin.userEdit');
+                ->name('admin.user.edit');
 
     Route::post('/users/update/{id}',
                 [AdminController::class, 'updateUser'])
-                ->name('admin.userUpdate');
+                ->name('admin.user.update');
 });
 
 

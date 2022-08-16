@@ -27,13 +27,13 @@
                                     <td>{{$article->user->name}}</td>
                                     <td>
                                         @if($article->accept == 1)
-                                            <a href={{route('admin.articleAccept', ['id' => $article->id])}} class="btn btn-danger">{{__('remove accept')}}</a>
+                                            <a href={{route('admin.article.accept', ['id' => $article->id])}} class="btn btn-danger">{{__('remove accept')}}</a>
                                         @else
-                                            <a href={{route('admin.articleAccept', ['id' => $article->id])}} class="btn btn-success">{{__('accept')}}</a>
+                                            <a href={{route('admin.article.accept', ['id' => $article->id])}} class="btn btn-success">{{__('accept')}}</a>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href={{route('admin.articleDelete', ['id' => $article->id])}} class="btn btn-danger">X</a>
+                                        <a href={{route('admin.article.delete', ['id' => $article->id])}} class="btn btn-danger">X</a>
                                     </td>
                                 </tr>
                     @endforeach
@@ -55,11 +55,11 @@ var quill = new Quill('#editor-container', {
         toolbar: [
           [{ header: [1, 2, false] }],
           ['bold', 'italic', 'underline'],
-          ['image', 'code-block']
+          ['code-block']
         ]
       },
       placeholder: 'Compose an epic...',
-      theme: 'snow'  // or 'bubble'
+      theme: 'snow'
     });
 
 $(document).ready(function(){
