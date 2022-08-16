@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/',
+            [ArticleController::class, 'showAllArticles'])
+            ->middleware(['Localization'])
+            ->name('welcome');
 
 Auth::routes();
 
@@ -30,18 +29,13 @@ Route::get('/loc/{locale?}',
             [LocalizationController::class, 'setLocalization'])
             ->name('setLocale');
 
-Route::get('/home',
-            [HomeController::class, 'index'])
-            ->middleware(['Localization'])
-            ->name('home');
-
 Route::get('/article/{slug}',
             [ArticleController::class, 'show'])
             ->middleware(['Localization'])
             ->name('article');
 
 Route::get('/category/{slug}',
-            [CategoryController::class, 'showArticlesFromCategory'])
+            [ArticleController::class, 'showArticlesFromCategory'])
             ->middleware(['Localization'])
             ->name('category.articlesFromCategory');
 

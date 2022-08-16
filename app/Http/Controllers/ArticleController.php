@@ -11,7 +11,36 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    public function showAllArticles()
+    {
+
+        $articles = Article::where('accept', 1)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return view('frontend.article.articles', [
+            'title'    => 'all articles',
+            'articles' => $articles
+        ]);
+    }
+    public function showArticlesFromCategory($slug)
+    {
+
+        $category = Category::where('slug', $slug)
+            ->firstOrFail();
+
+        $articles = $category->articles()
+            ->where('accept', 1)
+            ->get();
+
+        return view('frontend.article.articles', [
+            'title' => $category->name,
+            'articles' => $articles
+        ]);
+    }
+
     public function show($slug) {
+
         $article = Article::where('slug', $slug)->firstOrFail();
 
         return view('frontend.article.single', [
