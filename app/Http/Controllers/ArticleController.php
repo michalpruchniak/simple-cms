@@ -18,7 +18,7 @@ class ArticleController extends Controller
             ->orderBy('id', 'asc')
             ->get();
 
-        return view('frontend.article.articles', [
+        return view('article.articles', [
             'title'    => 'all articles',
             'articles' => $articles
         ]);
@@ -33,7 +33,7 @@ class ArticleController extends Controller
             ->where('accept', 1)
             ->get();
 
-        return view('frontend.article.articles', [
+        return view('article.articles', [
             'title' => $category->name,
             'articles' => $articles
         ]);
@@ -43,7 +43,7 @@ class ArticleController extends Controller
 
         $article = Article::where('slug', $slug)->firstOrFail();
 
-        return view('frontend.article.single', [
+        return view('article.single', [
             'article' => $article
         ]);
     }
