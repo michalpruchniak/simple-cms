@@ -13,14 +13,14 @@
                 <div class="card-body">
                     <form action="{{route('article.store')}}" method="POST" id="theform" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="title">{{__('title')}}</label>
-                            <input class="form-control" id="title" name="title" value={{old('title')}} >
+                            <input class="form-control mb-3" id="title" name="title" value={{old('title')}} >
                             @error('title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label>{{__('description')}}</label>
                             <div id="editor-container">
                                 {{old('description')}}
@@ -29,9 +29,9 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label>{{__('category')}}</label>
-                            <select class="form-control" name="category">
+                            <select class="form-control mb-3" name="category">
                                 @foreach ($categories as $category )
                                     <option value={{$category->id}} @if(old('category') == $category->id) selected @endif>{{$category->name}}</option>
                                 @endforeach
@@ -40,9 +40,9 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label>{{__('upload file')}}
-                            <input class="form-control" type="file" name="file">
+                            <input class="form-control mb-3" type="file" name="file">
                             @error('file')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

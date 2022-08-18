@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <form action="{{route('contact.send')}}" method="POST">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="department">{{__('department')}}</label>
                             <select id="department" class="form-control" name="department">
                                 <option value="team-leader@company.com">{{__('team leader')}}</option>
@@ -20,35 +20,35 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="name">{{__('name')}}</label>
                                 <input type="string" id="name" class="form-control" name="name">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="email">{{__('email')}}</label>
                                 <input type="string" id="email" class="form-control" name="email">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="subject">{{__('subject')}}</label>
                                 <input type="string" id="subject" class="form-control" name="subject">
                             @error('subject')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="content">{{__('content')}}</label>
                                 <textarea id="content" class="form-control" name="content"></textarea>
                             @error('content')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <button role="submit" class="btn btn-primary">{{__('send')}} <i class="fa-solid fa-envelope"></i></button>
                             </div>
                         </div>

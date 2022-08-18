@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <form action=@if(empty($user)){{route('admin.user.store')}} @else {{route('admin.user.update', ['id' => $user->id])}} @endif method="POST">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="name">{{__('name')}}</label>
                             <input class="form-control" id="name" name="name" value=@if(isset($user)) {{ $user->name }} @else {{ old('name')}} @endif >
                             @error('name')
@@ -17,7 +17,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="name">{{__('email')}}</label>
                             <input class="form-control" id="email" name="email" value=@if(isset($user)) {{ $user->email }} @else {{ old('email')}} @endif >
                             @error('email')
@@ -25,7 +25,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="name">{{__('default password')}}</label>
                             <input class="form-control" type="password" id="password" name="password">
                             @error('password')
