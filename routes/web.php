@@ -72,7 +72,7 @@ Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
                 [AdminController::class, 'acceptArticle'])
                 ->name('admin.article.accept');
 
-    Route::get('/articles/delete/{id}',
+    Route::post('/articles/delete',
                 [AdminController::class, 'deleteArticle'])
                 ->name('admin.article.delete');
 

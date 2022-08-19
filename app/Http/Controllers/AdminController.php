@@ -31,9 +31,9 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function deleteArticle($id) {
+    public function deleteArticle(Request $request) {
 
-        $article = Article::findOrFail($id);
+        $article = Article::findOrFail($request->articleId);
 
         $article->delete();
 

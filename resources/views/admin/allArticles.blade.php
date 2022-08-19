@@ -33,10 +33,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href={{route('admin.article.delete', ['id' => $article->id])}} class="btn btn-danger">X</a>
+                                        <button type="button" class="btn btn-danger remove-article" data-toggle="modal" data-id={{$article->id}} data-target="#modalConfirmation">
+                                                <i class="fa-solid fa-trash-can"></i> {{__('delete')}}
+                                          </button>
                                     </td>
                                 </tr>
-                    @endforeach
+                            @endforeach
 
                             </tbody>
                             </table>
@@ -49,24 +51,37 @@
         </div>
     </div>
 </div>
-    <script>
-var quill = new Quill('#editor-container', {
-    modules: {
-        toolbar: [
-          [{ header: [1, 2, false] }],
-          ['bold', 'italic', 'underline'],
-          ['code-block']
-        ]
-      },
-      theme: 'snow'
-    });
 
-$(document).ready(function(){
-  $("#theform").on("submit", function () {
-    let value = $('#editor-container .ql-editor').html();
-    $(this).append("<textarea name='description' style='display:none'>"+value+"</textarea>");
-   });
-});
-</script>
+<div class="modal" id="modalConfirmation">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">{{__('delete article')}}</h4>
+        </div>
+
+        <div class="modal-body">
+            {{__('are you sure that you want to delete user')}}
+            <form action={{route('admin.article.delete')}} method="POST">
+            @csrf
+            <input type="string" name="articleId" class="article-id invisible">
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> {{__('delete')}}</a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+      $(document).on("click", ".remove-article", function () {
+        let ArticleID = $(this).data('id');
+        $(".modal-body .article-id").val( ArticleID );
+      });
+  </script>
 
 @endsection

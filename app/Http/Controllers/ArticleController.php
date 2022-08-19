@@ -46,6 +46,7 @@ class ArticleController extends Controller
             'article' => $article
         ]);
     }
+
     public function create() {
 
         $categories = Category::orderBy('name', 'asc')

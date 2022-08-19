@@ -23,12 +23,12 @@
                                     <td><a href={{ route('admin.user.edit', ['id' => $user->id]) }}>{{$user->name}}</a></td>
                                     <td>@if($user->admin == 1) <i class="fa-solid fa-check"></i> @else <i class="fa-solid fa-xmark"></i> @endif</td>
                                     <td>
-                                          <button type="button" class="btn btn-danger remove-user" data-toggle="modal" data-id={{$user->id}} data-target="#modalConfirmation">
-                                                <i class="fa-solid fa-trash-can"></i> {{__('delete')}}
-                                          </button>
+                                        <button type="button" class="btn btn-danger delete-article" data-toggle="modal" data-id={{$user->id}} data-target="#modalConfirmation">
+                                            <i class="fa-solid fa-trash-can"></i> {{__('delete')}}
+                                        </button>
                                     </td>
                                 </tr>
-                    @endforeach
+                            @endforeach
 
                             </tbody>
                             </table>
@@ -41,7 +41,7 @@
         </div>
     </div>
 </div>
-    <div class="modal" id="modalConfirmation">
+<div class="modal" id="modalConfirmation">
     <div class="modal-dialog">
       <div class="modal-content">
 
@@ -53,7 +53,7 @@
             {{__('are you sure that you want to delete user')}}
             <form action={{route('admin.user.delete')}} method="POST">
             @csrf
-            <input type="string" name="userId" class="user-id invisible">
+            <input type="string" name="userId" class="article-id invisible">
 
         </div>
 
@@ -67,9 +67,9 @@
     </div>
   </div>
   <script>
-      $(document).on("click", ".remove-user", function () {
-     let UserID = $(this).data('id');
-     $(".modal-body .user-id").val( UserID );
-});
+      $(document).on("click", ".delete-article", function () {
+        let ArticleID = $(this).data('id');
+        $(".modal-body .article-id").val( ArticleID );
+      });
   </script>
 @endsection
