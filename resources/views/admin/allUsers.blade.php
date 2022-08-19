@@ -23,7 +23,9 @@
                                     <td><a href={{ route('admin.user.edit', ['id' => $user->id]) }}>{{$user->name}}</a></td>
                                     <td>@if($user->admin == 1) <i class="fa-solid fa-check"></i> @else <i class="fa-solid fa-xmark"></i> @endif</td>
                                     <td>
-                                        <a href={{route('admin.user.delete', ['id' => $user->id])}} class="btn btn-danger">X</a>
+                                          <button type="button" class="btn btn-danger remove-user" data-toggle="modal" data-id={{$user->id}} data-target="#modalConfirmation">
+                                                <i class="fa-solid fa-trash-can"></i> {{__('delete')}}
+                                          </button>
                                     </td>
                                 </tr>
                     @endforeach
@@ -39,5 +41,35 @@
         </div>
     </div>
 </div>
+    <div class="modal" id="modalConfirmation">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
+        <div class="modal-header">
+          <h4 class="modal-title">{{__('delete user')}}</h4>
+        </div>
+
+        <div class="modal-body">
+            {{__('are you sure that you want to delete user')}}
+            <form action={{route('admin.user.delete')}} method="POST">
+            @csrf
+            <input type="string" name="userId" class="user-id invisible">
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> {{__('delete')}}</a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+      $(document).on("click", ".remove-user", function () {
+     let UserID = $(this).data('id');
+     $(".modal-body .user-id").val( UserID );
+});
+  </script>
 @endsection

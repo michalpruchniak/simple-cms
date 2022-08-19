@@ -29,7 +29,8 @@
   "made by": "Made by",
   "dont have articles": "There are no articles",
   "you cant remove admin permission yourself": "You can't remove admin's permission for yourself.",
-  "you cant remove yourself account": "You can't remove yourself account."
-
+  "you cant remove yourself account": "You can't remove yourself account.",
+ "delete user": "Delete user",
+  "are you sure that you want to delete user": "Are you sure you want to delete this user? If you do, all related articles will also be deleted."
 
 }

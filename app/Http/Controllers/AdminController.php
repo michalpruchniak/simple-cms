@@ -95,9 +95,9 @@ class AdminController extends Controller
 
     }
 
-    public function deleteUser($id)
+    public function deleteUser(Request $request)
     {
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($request->userId);
         if($user->id == Auth::user()->id) {
             return view('messagePage.error', ['message' => 'you cant remove yourself account']);
 

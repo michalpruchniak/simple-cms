@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+
 
 Route::get('/loc/{locale?}',
             [LocalizationController::class, 'setLocalization'])
@@ -28,6 +28,9 @@ Route::post('/contact/send',
             ->name('contact.send');
 
 Route::middleware((['Localization']))->group(function() {
+
+    Auth::routes();
+
     Route::get('/',
                 [ArticleController::class, 'showAllArticles'])
                 ->name('welcome');
@@ -77,7 +80,7 @@ Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {
                 [AdminController::class, 'allUsers'])
                 ->name('admin.user.all');
 
-    Route::get('/users/delete/{id}',
+    Route::post('/users/delete',
                 [AdminController::class, 'deleteUser'])
                 ->name('admin.user.delete');
 
