@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Libraries\Helpers;
 use App\Http\Requests\ArticleStoreRequest;
-use Illuminate\Support\Str;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;

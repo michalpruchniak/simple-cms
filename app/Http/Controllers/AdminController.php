@@ -102,6 +102,8 @@ class AdminController extends Controller
             return view('messagePage.error', ['message' => 'you cant remove yourself account']);
 
         }
+
+        $user->articles()->delete();
         $user->delete();
 
         return redirect()->back();
