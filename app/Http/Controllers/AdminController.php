@@ -63,7 +63,7 @@ class AdminController extends Controller
             'admin' => $request->admin
         ]);
 
-        return redirect()->route('admin.allUsers');
+        return redirect()->route('admin.user.all');
     }
 
     public function editUser($id) {
