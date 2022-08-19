@@ -28,6 +28,8 @@
   "thank you for contact": "Thank you for contact",
   "made by": "Made by",
   "dont have articles": "There are no articles",
-  "you cant remove admin permission yourself": "You can't remove admin's permission for yourself."
+  "you cant remove admin permission yourself": "You can't remove admin's permission for yourself.",
+  "you cant remove yourself account": "You can't remove yourself account."
+
 
 }

@@ -82,7 +82,7 @@ class AdminController extends Controller
         $user->admin = $request->admin;
 
         if (!Helpers::checkCanRemoveAdminPermission($user, $request->admin)) {
-            return view('messagePage.error', ['message' => 'You cant remove admin permission yourself']);
+            return view('messagePage.error', ['message' => 'you cant remove admin permission yourself']);
         }
 
         if (isset($request->password)) {
@@ -98,6 +98,10 @@ class AdminController extends Controller
     public function deleteUser($id)
     {
         $user = User::findOrFail($id);
+        if($user->id == Auth::user()->id) {
+            return view('messagePage.error', ['message' => 'you cant remove yourself account']);
+
+        }
         $user->delete();
 
         return redirect()->back();
