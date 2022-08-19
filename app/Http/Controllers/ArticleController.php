@@ -6,6 +6,7 @@ use App\Libraries\Helpers;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
@@ -72,6 +73,29 @@ class ArticleController extends Controller
             'cover'       => $cover,
             'slug'        => $slug
         ]);
+
+    }
+
+    public function allUserArticle() {
+        $articles = Auth::user()->articles;
+        return view('article.articles', [
+            'title' => 'all articles',
+            'articles' => $articles
+        ]);
+    }
+
+    public function deleteArticle(Request $request)
+    {
+
+        $article = Article::findOrFail($request->articleId);
+
+        if($article->user_id == Auth::user()->id) {
+            $article->delete();
+
+            return redirect()->back();
+        } else {
+            return view('messagePage.error', ['message' => 'You dont have permission to this action']);
+        }
 
     }
 }

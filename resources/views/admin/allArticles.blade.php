@@ -61,7 +61,7 @@
         </div>
 
         <div class="modal-body">
-            {{__('are you sure that you want to delete user')}}
+            {{__('are you sure that you want to delete article')}}
             <form action={{route('admin.article.delete')}} method="POST">
             @csrf
             <input type="string" name="articleId" class="article-id invisible">

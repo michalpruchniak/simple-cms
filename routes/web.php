@@ -54,6 +54,8 @@ Route::middleware((['Localization']))->group(function() {
 
 Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
 
+    Route::get('article/all', [ArticleController::class, 'allUserArticle']);
+
     Route::get('/article/create',
                 [ArticleController::class, 'create'])
                 ->name('article.create');
@@ -61,6 +63,10 @@ Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
     Route::post('/article/store',
                 [ArticleController::class, 'store'])
                 ->name('article.store');
+
+    Route::post('/articles/delete',
+                [ArticleController::class, 'deleteArticle']
+    )->name('article.delete');
 });
 
 Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {

@@ -34,7 +34,7 @@
                             </table>
                             @else
                             @include('messages.error', ['message' => 'there are no articles'])
-                    @endif
+                            @endif
                 </div>
 
             </div>
