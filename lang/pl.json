@@ -27,5 +27,6 @@
   "send": "Wyślij",
   "thank you for contact": "Dziękujemy za kontakt",
   "made by": "Utworzony przez",
-  "dont have articles": "Nie ma żadnych artykułów"
+  "dont have articles": "Nie ma żadnych artykułów",
+  "you cant remove admin permission yourself": "Nie możesz usunąć sam sobie uprawnień administratora"
 }
