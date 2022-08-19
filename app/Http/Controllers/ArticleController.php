@@ -59,8 +59,10 @@ class ArticleController extends Controller
     }
 
     public function store(ArticleStoreRequest $request) {
+        $article = Article::all();
 
         $cover = Helpers::uploadFile($request->file('file'));
+        $slug = Helpers::getSlug($article, $request->title);
 
         Article::create([
             'user_id'     => Auth::user()->id,
@@ -68,7 +70,7 @@ class ArticleController extends Controller
             'description' => $request->description,
             'category_id' => $request->category,
             'cover'       => $cover,
-            'slug'        => Str::slug($request->title)
+            'slug'        => $slug
         ]);
 
     }
