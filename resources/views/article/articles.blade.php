@@ -13,6 +13,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">{{__('title')}}</th>
                                 <th scope="col">{{__('category')}}</th>
+                                <th scope="col">{{__('language')}}</th>
                                 <th scope="col">{{__('delete')}}?</th>
                                 </tr>
                             </thead>
@@ -20,8 +21,9 @@
                              @foreach ($articles as $article)
                                 <tr>
                                     <th scope="row">{{$article->id}}</th>
-                                    <td>{{$article->title}}</td>
+                                    <td><a href={{ route('article.edit', ['id' => $article->id]) }}>{{$article->title}}</td>
                                     <td>{{$article->category->name}}</td>
+                                    <td>{{$article->lang}}</td>
                                     <td>
                                         <button type="button" class="btn btn-danger remove-article" data-toggle="modal" data-id={{$article->id}} data-target="#modalConfirmation">
                                                 <i class="fa-solid fa-trash-can"></i> {{__('delete')}}

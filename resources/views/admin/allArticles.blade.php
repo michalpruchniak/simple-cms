@@ -14,6 +14,8 @@
                                 <th scope="col">{{__('title')}}</th>
                                 <th scope="col">{{__('category')}}</th>
                                 <th scope="col">{{__('user')}}</th>
+                                <th scope="col">{{__('category')}}</th>
+                                <th scope="col">{{__('language')}}</th>
                                 <th scope="col">{{__('accept')}}?</th>
                                 <th scope="col">{{__('delete')}}?</th>
                                 </tr>
@@ -25,6 +27,8 @@
                                     <td>{{$article->title}}</td>
                                     <td>{{$article->category->name}}</td>
                                     <td>{{$article->user->name}}</td>
+                                    <td>{{$article->category->name}}</td>
+                                    <td>{{$article->lang}}</td>
                                     <td>
                                         @if($article->accept == 1)
                                             <a href={{route('admin.article.accept', ['id' => $article->id])}} class="btn btn-danger">{{__('remove accept')}}</a>

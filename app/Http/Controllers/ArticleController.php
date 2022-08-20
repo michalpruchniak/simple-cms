@@ -89,7 +89,7 @@ class ArticleController extends Controller
         $articles = Article::all();
         $cover = Helpers::uploadFile($request->file('file'));
 
-        $slug = $request->slug;
+        $slug = $article->slug;
         if($request->title != $article->title) {
             $slug = Helpers::getSlug($articles, $request->title);
         }
@@ -101,6 +101,10 @@ class ArticleController extends Controller
         $article->lang = $request->language;
         $article->slug = $slug;
 
+        if($cover) {
+            $article->cover = $cover;
+        }
+
         $article->save();
 
         return redirect()->route('article.all');
@@ -109,7 +113,7 @@ class ArticleController extends Controller
 
     public function edit($id){
         $categories = Category::orderBy('name', 'asc')
-            ->get();
+                              ->get();
 
         $article = Article::where('id', $id)
                           ->where('user_id', Auth::user()->id)
