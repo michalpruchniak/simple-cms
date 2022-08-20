@@ -80,6 +80,9 @@
                                     <a class="dropdown-item" href="{{ route('article.create') }}">
                                         {{ __('create article') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('article.all') }}">
+                                        {{ __('my articles') }}
+                                    </a>
                                     @if(Auth::user()->admin == 1)
                                     <a class="dropdown-item" href="{{ route('admin.article.all') }}">
                                         {{ __('all articles') }}

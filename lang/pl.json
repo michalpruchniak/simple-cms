@@ -33,5 +33,6 @@
   "delete user": "Usuwanie użytkownika",
   "are you sure that you want to delete user": "Czy jesteś pewny, że chcesz usunąć tego użytkownika? Jeśli to zrobisz zostaną usunięte także wszystkie powiązane z nim artykuły.",
   "are you sure that you want to delete article": "Czy jesteś pewny, że chcesz usunąć ten artykuł?",
-  "You dont have permission to this action": "Nie masz uprawnień do wykonania tej akcji."
+  "You dont have permission to this action": "Nie masz uprawnień do wykonania tej akcji.",
+  "my articles": "Moje artykuły"
 }

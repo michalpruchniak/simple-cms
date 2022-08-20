@@ -54,7 +54,9 @@ Route::middleware((['Localization']))->group(function() {
 
 Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
 
-    Route::get('article/all', [ArticleController::class, 'allUserArticle']);
+    Route::get('article/all',
+                [ArticleController::class, 'allUserArticle'])
+                ->name('article.all');
 
     Route::get('/article/create',
                 [ArticleController::class, 'create'])
