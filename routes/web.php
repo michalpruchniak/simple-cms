@@ -66,9 +66,13 @@ Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
                 [ArticleController::class, 'store'])
                 ->name('article.store');
 
+    Route::get('/article/edit/{id}',
+                [ArticleController::class, 'edit'])
+                ->name('article.edit');
+
     Route::post('/articles/delete',
-                [ArticleController::class, 'deleteArticle']
-    )->name('article.delete');
+                [ArticleController::class, 'deleteArticle'])
+                ->name('article.delete');
 });
 
 Route::prefix('admin')->middleware((['AdminPermission']))->group(function() {

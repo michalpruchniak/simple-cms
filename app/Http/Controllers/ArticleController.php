@@ -80,6 +80,21 @@ class ArticleController extends Controller
 
     }
 
+    public function edit($id){
+        $categories = Category::orderBy('name', 'asc')
+            ->get();
+
+        $article = Article::where('id', $id)
+                          ->where('user_id', Auth::user()->id)
+                          ->firstOrFail();
+
+        return view('article.create', [
+            'categories' => $categories,
+            'article' => $article
+        ]);
+
+    }
+
     public function allUserArticle() {
         $articles = Auth::user()->articles;
         return view('article.articles', [
