@@ -8,15 +8,16 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ArticleController extends Controller
 {
     public function showAllArticles()
     {
-
         $articles = Article::where('accept', 1)
-            ->orderBy('id', 'asc')
-            ->get();
+                           ->where('lang', Session::get('localization'))
+                           ->orderBy('id', 'asc')
+                           ->get();
 
         return view('frontend.articles.allArticles', [
             'title'    => 'all articles',
@@ -27,11 +28,12 @@ class ArticleController extends Controller
     {
 
         $category = Category::where('slug', $slug)
-            ->firstOrFail();
+                            ->firstOrFail();
 
         $articles = $category->articles()
-            ->where('accept', 1)
-            ->get();
+                             ->where('accept', 1)
+                             ->where('lang', Session::get('localization'))
+                             ->get();
 
         return view('frontend.articles.allArticles', [
             'title' => $category->name,
