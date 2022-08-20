@@ -71,6 +71,7 @@ class ArticleController extends Controller
             'description' => $request->description,
             'category_id' => $request->category,
             'cover'       => $cover,
+            'lang'        => $request->language,
             'slug'        => $slug
         ]);
 

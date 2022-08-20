@@ -15,6 +15,7 @@ class Article extends Model
         'cover',
         'category_id',
         'accept',
+        'lang',
         'slug'
     ];
 

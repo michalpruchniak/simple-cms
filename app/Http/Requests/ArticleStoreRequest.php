@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ArticleStoreRequest extends FormRequest
 {
@@ -27,7 +28,8 @@ class ArticleStoreRequest extends FormRequest
             'title'       => 'required|string|between:5,50',
             'description' => 'required|string|between:20,4000',
             'category'    => 'required|exists:App\Models\Category,id',
-            'file'       => 'nullable|mimes:jpg,jpeg,png|max:1024'
+            'language'        => ['required', Rule::in(['pl', 'en'])],
+            'file'        => 'nullable|mimes:jpg,jpeg,png|max:1024'
         ];
     }
 }

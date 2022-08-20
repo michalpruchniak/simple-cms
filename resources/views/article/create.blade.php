@@ -47,6 +47,16 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group mb-3">
+                            <label>{{__('language')}}</label>
+                            <select class="form-control mb-3" name="language">
+                                <option value="en" @if(old('language') == "en") selected @endif>EN</option>
+                                <option value="pl" @if(old('language') == "pl") selected @endif>PL</option>
+                            </select>
+                            @error('language')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <button class="btn btn-primary" role="submit">{{__('save')}}</button>
                     </form>
                 </div>
@@ -61,7 +71,7 @@ var quill = new Quill('#editor-container', {
         toolbar: [
           [{ header: [1, 2, false] }],
           ['bold', 'italic', 'underline'],
-          ['image', 'code-block']
+          ['code-block']
         ]
       },
       theme: 'snow'
