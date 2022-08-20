@@ -70,6 +70,10 @@ Route::prefix('panel')->middleware(['Localization', 'auth'])->group(function() {
                 [ArticleController::class, 'edit'])
                 ->name('article.edit');
 
+    Route::post('/article/update/{id}',
+                [ArticleController::class, 'update'])
+                ->name('article.update');
+
     Route::post('/articles/delete',
                 [ArticleController::class, 'deleteArticle'])
                 ->name('article.delete');

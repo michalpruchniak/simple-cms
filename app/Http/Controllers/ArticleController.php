@@ -80,6 +80,33 @@ class ArticleController extends Controller
 
     }
 
+    public function update($id, ArticleStoreRequest $request) {
+
+        $article = Article::where('id', $id)
+                          ->where('user_id', Auth::user()->id)
+                          ->firstOrFail();
+
+        $articles = Article::all();
+        $cover = Helpers::uploadFile($request->file('file'));
+
+        $slug = $request->slug;
+        if($request->title != $article->title) {
+            $slug = Helpers::getSlug($articles, $request->title);
+        }
+
+        $article->title = $request->title;
+        $article->description = $request->description;
+        $article->category_id = $request->category;
+        $article->cover = $request->cover;
+        $article->lang = $request->language;
+        $article->slug = $slug;
+
+        $article->save();
+
+        return redirect()->route('article.all');
+
+    }
+
     public function edit($id){
         $categories = Category::orderBy('name', 'asc')
             ->get();

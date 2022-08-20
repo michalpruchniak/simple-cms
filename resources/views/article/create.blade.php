@@ -11,7 +11,7 @@
                 <div class="card-header">@if(isset($article)) {{ __('update article') }} @else {{ __('create article') }} @endif</div>
 
                 <div class="card-body">
-                    <form action="{{route('article.store')}}" method="POST" id="theform" enctype="multipart/form-data">
+                    <form action="@if(isset($article)) {{route('article.update', ['id' => $article->id])}} @else {{route('article.store')}} @endif" method="POST" id="theform" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
                             <label for="title">{{__('title')}}</label>
