@@ -13,6 +13,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">{{__('title')}}</th>
                                 <th scope="col">{{__('category')}}</th>
+                                <th scope="col">{{__('accept')}}?</th>
                                 <th scope="col">{{__('delete')}}?</th>
                                 </tr>
                             </thead>
@@ -22,6 +23,13 @@
                                     <th scope="row">{{$article->id}}</th>
                                     <td>{{$article->title}}</td>
                                     <td>{{$article->category->name}}</td>
+                                    <td>
+                                        @if($article->accept == 1)
+                                            <i class="fa-solid fa-check"></i>
+                                        @else
+                                            <i class="fa-solid fa-xmark"></i>
+                                        @endif
+                                    </td>
                                     <td>
                                         <button type="button" class="btn btn-danger remove-article" data-toggle="modal" data-id={{$article->id}} data-target="#modalConfirmation">
                                                 <i class="fa-solid fa-trash-can"></i> {{__('delete')}}
