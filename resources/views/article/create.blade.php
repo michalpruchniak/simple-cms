@@ -15,7 +15,7 @@
                         @csrf
                         <div class="form-group mb-3">
                             <label for="title">{{__('title')}}</label>
-                            <input class="form-control mb-3" id="title" name="title" value=@if(isset($article)) {{$article->title}} @else {{old('title')}} @endif >
+                            <input class="form-control mb-3" id="title" name="title" value=@if(isset($article) && !old('title')) {{$article->title}} @else {{old('title')}} @endif >
                             @error('title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -23,7 +23,7 @@
                         <div class="form-group mb-3">
                             <label>{{__('description')}}</label>
                             <div id="editor-container">
-                                @if(isset($article)) {!! $article->description !!} @else {!! old('description') !!} @endif
+                                @if(isset($article) && !old('description')) {!! $article->description !!} @else {!! old('description') !!} @endif
                             </div>
                             @error('description')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -33,7 +33,7 @@
                             <label>{{__('category')}}</label>
                             <select class="form-control mb-3" name="category">
                                 @foreach ($categories as $category )
-                                    @if(isset($article))
+                                    @if(isset($article) && !old('category'))
                                         <option value={{$category->id}}  @if($article->category_id == $category->id) selected @endif>{{$category->name}}</option>
                                     @else
                                         <option value={{$category->id}}  @if(old('category') == $category->id) selected @endif>{{$category->name}}</option>
@@ -54,8 +54,13 @@
                         <div class="form-group mb-3">
                             <label>{{__('language')}}</label>
                             <select class="form-control mb-3" name="language">
-                                <option value="en" @if(old('language') == "en") selected @endif>EN</option>
-                                <option value="pl" @if(old('language') == "pl") selected @endif>PL</option>
+                                @if(isset($article) && !old('language'))
+                                    <option value="en" @if($article->lang == "en") selected @endif>EN</option>
+                                    <option value="pl" @if($article->lang == "pl") selected @endif>PL</option>
+                                @else
+                                    <option value="en" @if(old('language') == "en") selected @endif>EN</option>
+                                    <option value="pl" @if(old('language') == "pl") selected @endif>PL</option>
+                                @endif
                             </select>
                             @error('language')
                                 <div class="alert alert-danger">{{ $message }}</div>
