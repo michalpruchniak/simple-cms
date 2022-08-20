@@ -58,7 +58,6 @@ class ArticleController extends Controller
         return view('article.create', [
             'categories' => $categories
         ]);
-
     }
 
     public function store(ArticleStoreRequest $request) {
@@ -76,6 +75,8 @@ class ArticleController extends Controller
             'lang'        => $request->language,
             'slug'        => $slug
         ]);
+
+        return redirect()->route('article.all');
 
     }
 
