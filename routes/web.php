@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\CaptchaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,10 @@ Route::middleware((['Localization']))->group(function() {
     Route::get('/',
                 [ArticleController::class, 'showAllArticles'])
                 ->name('welcome');
+
+    Route::get('/reload-captcha',
+                [CaptchaController::class, 'reloadCaptcha'])
+                ->name('captcha.reload');
 
     Route::get('/article/{slug}',
                 [ArticleController::class, 'show'])

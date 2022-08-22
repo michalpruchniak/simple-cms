@@ -92,4 +92,16 @@
         </div>
     </div>
 </div>
+<script>
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/reload-captcha',
+            crossDomain: true,
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
 @endsection

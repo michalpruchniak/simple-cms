@@ -74,23 +74,24 @@
         </div>
     </div>
 </div>
-    <script>
-var quill = new Quill('#editor-container', {
-    modules: {
-        toolbar: [
-          [{ header: [1, 2, false] }],
-          ['bold', 'italic', 'underline'],
-          ['code-block']
-        ]
-      },
-      theme: 'snow'
+<script>
+    let quill = new Quill('#editor-container', {
+        modules: {
+            toolbar: [
+            [{ header: [1, 2, false] }],
+            ['bold', 'italic', 'underline'],
+            ['code-block']
+            ]
+        },
+        theme: 'snow'
+        });
+
+    $(document).ready(function(){
+        $("#theform").on("submit", function () {
+            let value = $('#editor-container .ql-editor').html();
+            $(this).append("<textarea name='description' style='display:none'>"+value+"</textarea>");
+        });
     });
-$(document).ready(function(){
-  $("#theform").on("submit", function () {
-    let value = $('#editor-container .ql-editor').html();
-    $(this).append("<textarea name='description' style='display:none'>"+value+"</textarea>");
-   });
-});
 </script>
 
 @endsection
