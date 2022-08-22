@@ -61,7 +61,6 @@ class ArticleController extends Controller
     }
 
     public function store(ArticleStoreRequest $request) {
-
         $article = Article::all();
         $cover = Helpers::uploadFile($request->file('file'));
         $slug = Helpers::getSlug($article, $request->title);

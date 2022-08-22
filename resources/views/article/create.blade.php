@@ -15,7 +15,7 @@
                         @csrf
                         <div class="form-group mb-3">
                             <label for="title">{{__('title')}}</label>
-                            <input class="form-control mb-3" id="title" name="title" value=@if(isset($article) && !old('title')) {{$article->title}} @else {{old('title')}} @endif >
+                            <input class="form-control mb-3" id="title" name="title" value="@if(isset($article) && !old('title')) {{$article->title}} @else {{old('title')}} @endif" >
                             @error('title')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -78,13 +78,25 @@
     let quill = new Quill('#editor-container', {
         modules: {
             toolbar: [
-            [{ header: [1, 2, false] }],
-            ['bold', 'italic', 'underline'],
-            ['code-block']
+                    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                    [{ 'direction': 'rtl' }],                         // text direction
+
+                    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                    [{ 'font': [] }],
+                    [{ 'align': [] }],
+
+                    ['clean']
             ]
         },
         theme: 'snow'
         });
+
 
     $(document).ready(function(){
         $("#theform").on("submit", function () {

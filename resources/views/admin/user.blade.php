@@ -11,7 +11,7 @@
                         @csrf
                         <div class="form-group mb-3">
                             <label for="name">{{__('name')}}</label>
-                            <input class="form-control" id="name" name="name" value=@if(isset($user)) {{ $user->name }} @else {{ old('name')}} @endif >
+                            <input class="form-control" id="name" name="name" value="@if(isset($user)) {{ $user->name }} @else {{ old('name')}} @endif" >
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -19,7 +19,7 @@
 
                         <div class="form-group mb-3">
                             <label for="name">{{__('email')}}</label>
-                            <input class="form-control" id="email" name="email" value=@if(isset($user)) {{ $user->email }} @else {{ old('email')}} @endif >
+                            <input class="form-control" id="email" name="email" value="@if(isset($user)) {{ $user->email }} @else {{ old('email')}} @endif" >
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
