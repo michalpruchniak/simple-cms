@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">@if(isset($user)) {{__('update user')}} @else {{__('create user')}} @endif</div>
 
                 <div class="card-body">
                     <form action=@if(empty($user)){{route('admin.user.store')}} @else {{route('admin.user.update', ['id' => $user->id])}} @endif method="POST">
