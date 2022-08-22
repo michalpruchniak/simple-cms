@@ -69,14 +69,15 @@
                                         &#x21bb;
                                     </button>
                                 </div>
-                                 <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" placeholder="Enter Captcha" name="captcha">
+                                 <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" placeholder="{{ __('enter captcha') }}" name="captcha">
                                                 @error('captcha')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+
+
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">

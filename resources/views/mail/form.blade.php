@@ -49,6 +49,22 @@
                             @enderror
                             </div>
                             <div class="form-group mb-3">
+                                <label for="content">{{__('captcha')}}</label>
+                                <div class="form-group">
+                                    <div class="captcha">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                        &#x21bb;
+                                    </button>
+                                </div>
+                                 <input id="captcha" type="text" class="form-control" placeholder="{{ __('enter captcha') }}" name="captcha">
+                                @error('captcha')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                            <div class="form-group mb-3">
                                 <button role="submit" class="btn btn-primary">{{__('send')}} <i class="fa-solid fa-envelope"></i></button>
                             </div>
                         </div>

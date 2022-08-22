@@ -28,7 +28,8 @@ class ContactSendRequest extends FormRequest
             'name'       => 'required|string|between:5,20',
             'email'      => 'required|string|email|between:5,20',
             'subject'    => 'required|string|between:5,255',
-            'content'    => 'required|string|between:10,1500'
+            'content'    => 'required|string|between:10,1500',
+            'captcha' => ['required', 'captcha']
         ];
     }
 }
