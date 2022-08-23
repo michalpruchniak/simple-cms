@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactSendRequest;
-use App\Mail\Contact;
-use Illuminate\Support\Facades\Mail;
 use Throwable;
+use App\Libraries\Messages\Messages;
+use App\Libraries\Messages\Strategy\SendMail;
 
 class MailController extends Controller
 {
@@ -17,12 +17,19 @@ class MailController extends Controller
 
         try {
             $information = $information->all();
-            Mail::to($information['department'])
-                ->send(new Contact($information));
+            $mail = new Messages(new SendMail(), $information);
+            $mail->send();
+            // I know that in this case using strategy is not have
+            // a sense but I want to practice this strategy :)
+            // Other method is in comment
+
+            // Mail::to($information['department'])
+            //     ->send(new Contact($information));
 
             return redirect()->route('contact.acknowledgement');
-        } catch(Throwable) {
-            return view('messagePage.error', ['this message doesnt send']);
+        } catch(Throwable $th) {
+            dd($th);
+            return view('messagePage.error', ['message' => 'this message doesnt send']);
         }
 
     }

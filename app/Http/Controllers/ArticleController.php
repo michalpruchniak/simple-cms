@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Libraries\Helpers;
+
 use App\Http\Requests\ArticleStoreRequest;
+use App\Libraries\ConcreteStrategyB;
+use App\Libraries\Context;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -24,6 +27,7 @@ class ArticleController extends Controller
             'articles' => $articles
         ]);
     }
+
     public function showArticlesFromCategory($slug)
     {
 

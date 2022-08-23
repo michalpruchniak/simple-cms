@@ -16,4 +16,5 @@ Nie starałem się tworzyć kodu produkcyjnego, a jedynie pokazać, że znam PHP
 2. Zrezygnowałem z Vite. Tutaj skupiałem się wyłącznie na backendzie, więc Vite nie było mi potrzebne.
 3. Skupiłem się na backendzie. Frontend nie był dla mnie istotny. Oczyście - gdybym tworzył kod produkcyjny, zapewno wydzieliłbym konkretne elementy interfejsu, do osobnych plików (np. nawigację), poprawiłbym design, a tak stronę postawiłem na Bootstrapie. 
 4. Jak wspomniałem wcześniej - można dodać niektóre funkcjonalności, np. dodawanie, czy zarządzanie kategoriami, ale to jest w zasadzie po prostu CRUD.
+5. Użyłem wzorca strategii nie dlatego, żeby był potrzebny w tym konkretnym przypadku, ale dlatego, żeby go poćwiczyć. Wyobraźmy sobie jednak, że aplikacja rozrasta się i można wysyłać wiadomości  mailem, WhatsAppem, zapisywane w bazie danych i później użytkownicy o określonych uprawnieniach mieliby do nich dostęp. Specjalnie w MAilController zostawiłem zakomentowany kod do wysyłania maili, ponieważ w tym konkretnym ma on więcej sensu.
 

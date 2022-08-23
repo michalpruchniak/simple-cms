@@ -12,9 +12,9 @@
                         <div class="form-group mb-3">
                             <label for="department">{{__('department')}}</label>
                             <select id="department" class="form-control" name="department">
-                                <option value="team-leader@company.com">{{__('team leader')}}</option>
-                                <option value="programming@company.com">{{__('programming department')}}</option>
-                                <option value="hr@company.com">{{__('hr')}}</option>
+                                <option value="team-leader@company.com" @if(old('department') == "team-leader@company.com") selected @endif>{{__('team leader')}}</option>
+                                <option value="programming@company.com" @if(old('department') == "programming@company.com") selected @endif>{{__('programming department')}}</option>
+                                <option value="hr@company.com" @if(old('department') == "hr@company.com") selected @endif>{{__('hr')}}</option>
                             </select>
                             @error('department')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -22,28 +22,28 @@
                         </div>
                             <div class="form-group mb-3">
                                 <label for="name">{{__('name')}}</label>
-                                <input type="string" id="name" class="form-control" name="name">
+                                <input type="string" id="name" class="form-control" name="name" value="{{old('name')}}">
                             @error('name')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label for="email">{{__('email')}}</label>
-                                <input type="string" id="email" class="form-control" name="email">
+                                <input type="string" id="email" class="form-control" name="email" value="{{old('email')}}">
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label for="subject">{{__('subject')}}</label>
-                                <input type="string" id="subject" class="form-control" name="subject">
+                                <input type="string" id="subject" class="form-control" name="subject" value="{{old('subject')}}">
                             @error('subject')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content">{{__('content')}}</label>
-                                <textarea id="content" class="form-control" name="content"></textarea>
+                                <textarea id="content" class="form-control" name="content">{{old('content')}}</textarea>
                             @error('content')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

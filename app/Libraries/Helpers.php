@@ -4,6 +4,7 @@ use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Auth;
 
+
 class Helpers {
     public static function uploadFile($file) {
 
