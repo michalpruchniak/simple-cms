@@ -28,7 +28,6 @@ class MailController extends Controller
 
             return redirect()->route('contact.acknowledgement');
         } catch(Throwable $th) {
-            dd($th);
             return view('messagePage.error', ['message' => 'this message doesnt send']);
         }
 
